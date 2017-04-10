@@ -90,6 +90,33 @@ public String peek()
   }
   
   return element;
-}  
+} 
+public int forwardTraverse()
+  {
+    Node temp;
+    int n = 0;
+    System.out.println("Q-----");
+    
+    if(!isEmpty())
+    {
+     temp = head;
+     
+     do
+     {
+       n++;
+       if(temp == head)
+       {
+         System.out.printf("[%d] (%s) \n", n, temp.getElem());
+       }
+       else
+       {
+       System.out.printf("[%d] \"%s\" \n", n, temp.getElem());
+       }
+       temp = temp.getNext();
+     }
+     while(temp != null);
+    }
+    return n;
+  }
 }
    

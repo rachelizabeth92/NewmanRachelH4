@@ -1,15 +1,95 @@
 public class H4Queue
 {
-  public static void enqueue(Queue queue, String j)
+  
+  private Node head;
+  private Node tail;
+  private int size;
+  
+  public H4Queue()
   {
-       queue.add(j);
-       System.out.println("enqueue(" + j + ")");
-   }
-  public static String dequeue(Queue queue)
+    this.tail = null;
+    this.head = null;
+    this.size = 0;
+  }
+  
+  public boolean isEmpty()
   {
-        String delete = (String)queue.delete();
-        System.out.println("dequeue(" + deleted + ")");
-        return deleted;
+    if(size == 0)
+    {
+      return true;
     }
+    else
+    {
+      return false;
+    }
+  }
+  
+  public boolean isFull()
+  {
+    return false; 
+  }
+
+  public int getSize()
+  {
+    return this.size;
+  }
+
+
+  public int enqueue(String element)
+  {
+    Node node = new Node(element);
+    
+    if(this.isEmpty())
+    {
+      tail = node;
+      head = node;
+    }
+    else
+    {
+      tail.setNext(node);
+      tail = node;
+    }
+    return ++size;
+  }
+  
+  public String dequeue()
+  {
+    Node node;
+    String element;
+    
+    if(this.isEmpty())
+    {
+      element = null;
+    }
+    else
+    {
+      node = head;
+      head = node.getNext();
+      element = node.getElem();
+      size--;
+      
+      if(this.isEmpty())
+      {
+        tail = head;
+      }
+    }
+    return element;
+  }
+  
+public String peek()
+{
+  String element;
+  
+  if(this.isEmpty())
+  {
+    element = null;
+  }
+  else
+  {
+    element = head.getElem();
+  }
+  
+  return element;
+}  
 }
    
